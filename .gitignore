@@ -1,0 +1,16 @@
+node_modules/
+dist/
+coverage/
+.env
+
+# Локальные файлы редакторов
+.vscode/
+.idea/
+*.log
+
+# Файлы зависимостей ОС
+.DS_Store
+Thumbs.db
+
+# Файл автодлокировки npm
+package-lock.json
