@@ -1,0 +1,14 @@
+image: node:latest
+
+install:
+  - npm ci
+
+build_script:
+  - npm run build
+
+test_script:
+  - npm run test:coverage
+
+cache:
+  - node_modules
+  - '%APPDATA%\npm-cache'
