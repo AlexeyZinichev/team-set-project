@@ -19,15 +19,15 @@ describe('ErrorRepository', () => {
             expect(repository.translate(500)).toBe('Internal Server Error');
         });
 
-        test('should return \"Unknown error\" for non-existing code', () => {
+        test('should return "Unknown error" for non-existing code', () => {
             expect(repository.translate(999)).toBe('Unknown error');
         });
 
-        test('should return \"Unknown error\" for string input', () => {
+        test('should return "Unknown error" for string input', () => {
             expect(repository.translate('404')).toBe('Unknown error');
         });
 
-        test('should return \"Unknown error\" for null input', () => {
+        test('should return "Unknown error" for null input', () => {
             expect(repository.translate(null)).toBe('Unknown error');
         });
     });

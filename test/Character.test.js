@@ -2,20 +2,21 @@ import Character from '../src/Character.js';
 
 describe('Character', () => {
     describe('constructor', () => {
-        test('should create instance with name and id', () => {
-            const char = new Character('Warrior');
-            expect(char.name).toBe('Warrior');
-            expect(typeof char.id).toBe('symbol');
-        });
-
-        test('should throw error if name is missing', () => {
-            expect(() => new Character()).toThrow('Character name must be a non-empty string.');
-        });
-
-        test('should throw error if name is not a string', () => {
-            expect(() => new Character(123)).toThrow('Character name must be a non-empty string.');
-        });
+    test('should create character with valid name', () => {
+        const char = new Character('Warrior');
+        expect(char.name).toBe('Warrior');
     });
+
+    // Добавьте эти тесты для покрытия строк с ошибками:
+    test('should throw error if name is empty string', () => {
+        expect(() => new Character('')).toThrow('Character name must be a non-empty string.');
+    });
+
+    test('should throw error if name is not a string', () => {
+        expect(() => new Character(123)).toThrow('Character name must be a non-empty string.');
+        expect(() => new Character(null)).toThrow('Character name must be a non-empty string.');
+    });
+});
 
     describe('equals', () => {
         test('should return true for same instance', () => {

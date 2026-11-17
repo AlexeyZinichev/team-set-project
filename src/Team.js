@@ -6,23 +6,31 @@ export default class Team {
     }
 
     add(character) {
-        if (!(character instanceof Character)) {
-            throw new Error('Argument must be an instance of Character.');
-        }
-        if (this.members.has(character)) {
-            throw new Error(Character \ is already in the team.);
-        }
-        this.members.add(character);
+    // Проверка типа аргумента
+    if (!(character instanceof Character)) {
+        throw new Error('Argument must be an instance of Character.');
     }
 
-    addAll(...characters) {
-        for (const character of characters) {
-            try {
-                this.add(character);
-            } catch (e) {
-            }
-        }
+    // Проверка на дубликат
+    if (this.members.has(character)) {
+        // Используем character.name, так как в тесте new Character('Warrior')
+        throw new Error(`Character ${character.name} is already in the team.`);
     }
+
+    // Добавление в Set
+    this.members.add(character);
+}
+
+   addAll(...characters) {
+    characters.forEach(char => {
+        try {
+            this.add(char);
+        } catch (error) {
+            // Если персонаж уже есть (ошибка), просто ничего не делаем
+            // и переходим к следующему символу в массиве
+        }
+    });
+}
 
     toArray() {
         return Array.from(this.members);

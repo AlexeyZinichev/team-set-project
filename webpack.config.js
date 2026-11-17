@@ -1,18 +1,12 @@
+// webpack.config.js
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
-    entry: './src/index.js',
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        library: {
-            name: 'TeamBuilder',
-            type: 'umd'
-        }
-    },
-    devtool: 'source-map',
-    resolve: {
-        extensions: ['.js']
-    }
+  entry: './src/index.js', // или ваш главный файл
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  target: 'node', // <--- Добавьте эту строку. Если собираете для браузера, напишите "web"
+  mode: 'production',
 };
